@@ -1,0 +1,26 @@
+{
+	"name": "sfdx-forcex",
+	"description": "Salesforce CLI extension plugin",
+	"version": "0.0.1",
+	"author": "GeorgePreece",
+	"dependencies": {
+		"@oclif/command": "^1",
+		"@oclif/config": "^1",
+		"@oclif/errors": "^1",
+		"@salesforce/command": "^3",
+		"@salesforce/core": "^2.1.6"
+	},
+	"engines": {
+		"node": ">=8.0.0"
+	},
+	"files": [],
+	"oclif": {
+		"commands": "./commands",
+		"bin": "sfdx",
+		"topics": {
+			"forcex": {
+				"description": "force topic extension"
+			}
+		}
+	}
+}
