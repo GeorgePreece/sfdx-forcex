@@ -4,11 +4,7 @@
 	"version": "0.0.1",
 	"author": "GeorgePreece",
 	"dependencies": {
-		"@oclif/command": "^1",
-		"@oclif/config": "^1",
-		"@oclif/errors": "^1",
-		"@salesforce/command": "^3",
-		"@salesforce/core": "^2.1.6"
+		"@salesforce/command": "^3"
 	},
 	"engines": {
 		"node": ">=8.0.0"
