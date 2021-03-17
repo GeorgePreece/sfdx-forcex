@@ -4,6 +4,9 @@ const fs      = require("fs");
 const batchSize = 200;
 
 module.exports = class extends command.SfdxCommand {
+	static requiresUsername = true;
+	static requiresProject  = true;
+
 	async run() {
 		this.ux.startSpinner("Retrieving managed global classes");
 		this.connection  = this.org.getConnection();
@@ -53,6 +56,3 @@ module.exports = class extends command.SfdxCommand {
 		return pairs.join('&');
 	}
 }
-
-module.exports.requiresUsername = true;
-module.exports.requiresProject  = true;
