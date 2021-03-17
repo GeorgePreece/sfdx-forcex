@@ -1,11 +1,13 @@
 const command = require("@salesforce/command");
 const fs      = require("fs");
 
-const batchSize = 200;
-
 module.exports = class extends command.SfdxCommand {
 	static requiresUsername = true;
-	static requiresProject  = true;
+	static requiresProject = true;
+	static description = "Imports managed global classes to the Apex language server";
+	static flagsConfig = { 
+		batchsize: command.flags.integer({ char: "b", description: "Retrieval batch size" })
+	};
 
 	async run() {
 		this.ux.startSpinner("Retrieving managed global classes");
@@ -33,9 +35,9 @@ module.exports = class extends command.SfdxCommand {
 
 		this.ux.setSpinnerStatus(`0/${ recordIds.length }`);
 
-		for(let i = 0; i < Math.ceil(recordIds.length / batchSize); ++i) {
-			const startIndex = batchSize * i;
-			const endIndex   = startIndex + batchSize;
+		for(let i = 0; i < Math.ceil(recordIds.length / this.flags.batchsize); ++i) {
+			const startIndex = this.flags.batchsize * i;
+			const endIndex   = startIndex + this.flags.batchsize;
 
 			const qs = this.buildQueryString({
 				ids: recordIds.slice(startIndex, endIndex).join(','),
