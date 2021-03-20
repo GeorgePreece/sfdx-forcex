@@ -10,7 +10,7 @@ module.exports = class extends command.SfdxCommand {
 	};
 
 	async run() {
-		this.ux.startSpinner("Retrieving managed global classes");
+		this.ux.startSpinner("Retrieving Apex manifest");
 		this.connection  = this.org.getConnection();
 		this.projectJson = await this.project.resolveProjectConfig();
 
@@ -33,11 +33,13 @@ module.exports = class extends command.SfdxCommand {
 			}
 		}
 
+		this.ux.startSpinner("Retrieving Apex managed classes");
 		this.ux.setSpinnerStatus(`0/${ recordIds.length }`);
 
-		for(let i = 0; i < Math.ceil(recordIds.length / this.flags.batchsize); ++i) {
-			const startIndex = this.flags.batchsize * i;
-			const endIndex   = startIndex + this.flags.batchsize;
+		const batchSize = this.flags.batchsize || 200;
+		for(let i = 0; i < Math.ceil(recordIds.length / batchSize); ++i) {
+			const startIndex = batchSize * i;
+			const endIndex   = startIndex + batchSize;
 
 			const qs = this.buildQueryString({
 				ids: recordIds.slice(startIndex, endIndex).join(','),
