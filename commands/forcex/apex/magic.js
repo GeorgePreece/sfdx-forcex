@@ -4,9 +4,9 @@ const fs      = require("fs");
 module.exports = class extends command.SfdxCommand {
 	static requiresUsername = true;
 	static requiresProject = true;
-	static description = "Imports managed global classes to the Apex language server";
+	static description = "imports managed global classes to the Apex language server";
 	static flagsConfig = { 
-		batchsize: command.flags.integer({ char: "b", description: "Retrieval batch size" })
+		batchsize: command.flags.integer({ char: "b", description: "retrieval batch size" })
 	};
 
 	async run() {
