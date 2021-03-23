@@ -13,23 +13,26 @@ module.exports = class extends command.SfdxCommand {
 		this.ux.startSpinner("Retrieving Apex manifest");
 		this.connection  = this.org.getConnection();
 		this.projectJson = await this.project.resolveProjectConfig();
-
+		
+		// Prepare the storage location
 		const toolsPath = `${this.project.getPath()}/.sfdx/tools/installed-packages`;
-		if(!fs.existsSync(toolsPath)) fs.mkdirSync(toolsPath);
+		fs.rmdirSync(toolsPath, { recursive: true });
+		fs.mkdirSync(toolsPath, { recursive: true });
 
+		// Retrieve the Apex manifest
 		const recordIds = [ ];
-		for(let item of await this.connection.request("/tooling/apexManifest")) {
-			const packagePath = `${toolsPath}/${item.namespace}`;
-			if(!fs.existsSync(packagePath)) {
-				fs.mkdirSync(packagePath);
-				fs.writeFileSync(
-					`${packagePath}/installed-package.json`,
-					JSON.stringify({ namespace: item.namespace }, null, "\t")
-				);
-			}
-
-			if(item.type == "CLASS" && item.namespace != this.projectJson.namespace) {
+		for(const item of await this.connection.request("/tooling/apexManifest")) {
+			if(item.type == "CLASS" && item.namespace !== this.projectJson.namespace) {
 				recordIds.push(item.id);
+
+				const packagePath = `${toolsPath}/${item.namespace}`;
+				if(!fs.existsSync(packagePath)) {
+					fs.mkdirSync(packagePath);
+					fs.writeFileSync(
+						`${packagePath}/installed-package.json`,
+						JSON.stringify({ namespace: item.namespace }, null, "\t")
+					);
+				}
 			}
 		}
 
