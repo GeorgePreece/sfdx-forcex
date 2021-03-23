@@ -4,7 +4,7 @@ const fs      = require("fs");
 module.exports = class extends command.SfdxCommand {
 	static requiresUsername = true;
 	static requiresProject = true;
-	static description = "imports managed global classes to the Apex language server";
+	static description = "imports managed global faux classes to the Apex language server";
 	static flagsConfig = { 
 		batchsize: command.flags.integer({ char: "b", description: "retrieval batch size" })
 	};
@@ -48,8 +48,11 @@ module.exports = class extends command.SfdxCommand {
 				ids: recordIds.slice(startIndex, endIndex).join(','),
 				fields: [ "Id", "NamespacePrefix", "Name", "Body" ]
 			});
-			for(let record of await this.connection.request(`/composite/sobjects/ApexClass?${ qs }`))
-				fs.writeFileSync(`${ toolsPath }/${ record.NamespacePrefix }/${ record.Name }.cls`, record.Body);
+			for(const record of await this.connection.request(`/composite/sobjects/ApexClass?${ qs }`)) {
+				// Strip the faux class of any annotations before saving
+				const body = record.Body.replace(/@\w+(?:\(.*?\))?\s*/g, '');
+				fs.writeFileSync(`${ toolsPath }/${ record.NamespacePrefix }/${ record.Name }.cls`, body);
+			}
 
 			this.ux.setSpinnerStatus(`${ Math.min(recordIds.length, endIndex) }/${ recordIds.length }`);
 		}
