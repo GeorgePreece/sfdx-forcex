@@ -39,10 +39,13 @@ module.exports = class extends command.SfdxCommand {
 	}
 
 	createFauxClass(directory, name, externalStrings) {
-		const body = externalStrings
-			.map(x => `\tglobal static String ${x.name} = '${x.value.replace("'", "\\'")}';`)
-			.join("\n")
-		const data = `global class ${name} {\n${body}\n}`;
+		var data = `global class ${name} {\n`;
+		for(let item of externalStrings) {
+			const value = item.value.replace("*/", "*\\/");
+			data += `\t/**\n\t * ${value}\n\t */\n`
+				+ `\tglobal static String ${ item.name };\n`;
+		}
+		data += `}`;
 		fs.writeFileSync(`${directory}/${name}.cls`, data);
 	}
 }
