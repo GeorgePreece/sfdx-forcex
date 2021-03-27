@@ -29,6 +29,7 @@ module.exports = class extends command.SfdxCommand {
 		
 		const query = "SELECT Id, Name, Value FROM ExternalString";
 		const data = await this.connection.tooling.autoFetchQuery(query);
+		this.ux.log(data);
 		const result = data.records.map(x => ({ name: x.Name, value: x.Value }));
 
 		this.ux.stopSpinner("External strings retrieved successfully");
@@ -38,7 +39,7 @@ module.exports = class extends command.SfdxCommand {
 
 	createFauxClass(directory, name, externalStrings) {
 		const body = externalStrings
-			.map(x => `\tglobal String ${x.name} = '${x.value}';`)
+			.map(x => `\tglobal String ${x.name} = '${x.value.replace("'", "\\'")}';`)
 			.join("\n")
 		const data = `global class ${name} {\n${body}\n}`;
 		fs.writeFileSync(`${directory}/${name}.cls`, data);
