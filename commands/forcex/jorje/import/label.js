@@ -29,7 +29,6 @@ module.exports = class extends command.SfdxCommand {
 		
 		const query = "SELECT Id, NamespacePrefix, Name, Value FROM ExternalString";
 		const data = await this.connection.tooling.autoFetchQuery(query);
-		this.ux.log(data);
 		const result = data.records
 			.filter(x => x.NamespacePrefix === this.projectJson.namespace)
 			.map(x => ({ name: x.Name, value: x.Value }));
