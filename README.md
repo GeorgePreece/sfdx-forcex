@@ -4,14 +4,11 @@ An SFDX CLI plug-in filling the gaps of the existing plug-ins.
 
 ## Installation
 
-Clone this repository:  
-`$ git clone https://github.com/GeorgePreece/sfdx-forcex.git`  
+To install:  
+`$ sfdx plugins:install https://github.com/GeorgePreece/sfdx-forcex`
 
-Install dependencies:  
-`$ npm --prefix sfdx-forcex install`
-
-Link the plug-in:  
-`$ sfdx plugins:link sfdx-forcex`
+To uninstall:  
+`$ sfdx plugins:uninstall sfdx-forcex`
 
 ## Commands
 
