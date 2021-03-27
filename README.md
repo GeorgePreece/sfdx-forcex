@@ -20,7 +20,7 @@ $ sfdx forcex:jorje:import:apex
   [--json]
   [--loglevel LOGLEVEL]
   [--targetusername TARGETUSERNAME]
-  [--apiversion APIVERSIOn]
+  [--apiversion APIVERSION]
 ```
 
 ### `forcex:jorje:import:label`
@@ -31,5 +31,5 @@ $ sfdx forcex:jorje:import:label
   [--json]
   [--loglevel LOGLEVEL]
   [--targetusername TARGETUSERNAME]
-  [--apiversion APIVERSIOn]
+  [--apiversion APIVERSION]
 ```
