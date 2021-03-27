@@ -7,7 +7,7 @@ An SFDX CLI plug-in filling the gaps of the existing plug-ins.
 Clone this repository:  
 `$ git clone https://github.com/GeorgePreece/sfdx-forcex.git`  
 
-Install dependencies:
+Install dependencies:  
 `$ npm --prefix sfdx-forcex install`
 
 Link the plug-in:  
