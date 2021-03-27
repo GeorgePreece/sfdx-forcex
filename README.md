@@ -1,6 +1,6 @@
 # SFDX Forcex
 
-An SFDX CLI plug-in filling the gaps of the existing plug-ins.
+An unofficial SFDX CLI plug-in providing a simple set of tools to enhance development experience.
 
 ## Installation
 
@@ -13,7 +13,8 @@ To uninstall:
 ## Commands
 
 ### `forcex:jorje:import:apex`
-Imports global classes from managed packages into the language server.
+Imports global classes from managed packages into the language server.  
+*You may have to restart the language server for the changes to take effect.*
 #### Command syntax
 ```
 $ sfdx forcex:jorje:import:apex 
@@ -24,7 +25,8 @@ $ sfdx forcex:jorje:import:apex
 ```
 
 ### `forcex:jorje:import:label`
-Imports custom labels into the language server.
+Imports custom labels into the language server.  
+*You may have to restart the language server for the changes to take effect.*
 #### Command syntax
 ```
 $ sfdx forcex:jorje:import:label 
