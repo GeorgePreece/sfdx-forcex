@@ -27,10 +27,12 @@ module.exports = class extends command.SfdxCommand {
 	async fetchExternalStrings() {
 		this.ux.startSpinner("Retrieving external strings");
 		
-		const query = "SELECT Id, Name, Value FROM ExternalString";
+		const query = "SELECT Id, NamespacePrefix, Name, Value FROM ExternalString";
 		const data = await this.connection.tooling.autoFetchQuery(query);
 		this.ux.log(data);
-		const result = data.records.map(x => ({ name: x.Name, value: x.Value }));
+		const result = data.records
+			.filter(x => x.NamespacePrefix === this.projectJson.namespace)
+			.map(x => ({ name: x.Name, value: x.Value }));
 
 		this.ux.stopSpinner("External strings retrieved successfully");
 
