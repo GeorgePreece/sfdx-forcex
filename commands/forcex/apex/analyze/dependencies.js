@@ -33,6 +33,16 @@ module.exports = class extends command.SfdxCommand {
 
 		this.ux.stopSpinner("Metadata component dependencies retrieved successfully");
 
+		this.ux.logJson(
+			await this.connection.tooling.autoFetchQuery(
+				`
+					SELECT Id, SymbolTable 
+					FROM ApexClass 
+					WHERE Name = 'ApplySubmittedEventListener'
+				`
+			)
+		);
+
 		return result;
 	}
 

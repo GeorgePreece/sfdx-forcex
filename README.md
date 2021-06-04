@@ -36,7 +36,7 @@ $ sfdx forcex:jorje:import:label
   [--apiversion APIVERSION]
 ```
 
-### `forcex:apex:dependencies`
+### `forcex:apex:analyze:dependencies`
 Retrieves and aggregates Apex class dependencies for review.
 #### Command syntax
 ```
