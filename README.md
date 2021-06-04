@@ -40,7 +40,7 @@ $ sfdx forcex:jorje:import:label
 Retrieves and aggregates Apex class dependencies for review.
 #### Command syntax
 ```
-$ sfdx forcex:jorje:import:label 
+$ sfdx forcex:apex:analyze:dependencies 
   [--json]
   [--loglevel LOGLEVEL]
   [--targetusername TARGETUSERNAME]
