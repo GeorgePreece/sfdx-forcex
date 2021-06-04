@@ -35,3 +35,14 @@ $ sfdx forcex:jorje:import:label
   [--targetusername TARGETUSERNAME]
   [--apiversion APIVERSION]
 ```
+
+### `forcex:apex:dependencies`
+Retrieves and aggregates Apex class dependencies for review.
+#### Command syntax
+```
+$ sfdx forcex:jorje:import:label 
+  [--json]
+  [--loglevel LOGLEVEL]
+  [--targetusername TARGETUSERNAME]
+  [--apiversion APIVERSION]
+```
