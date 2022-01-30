@@ -12,30 +12,6 @@ To uninstall:
 
 ## Commands
 
-### `forcex:jorje:import:apex`
-Imports global classes from managed packages into the language server.  
-*You may have to restart the language server for the changes to take effect.*
-#### Command syntax
-```
-$ sfdx forcex:jorje:import:apex 
-  [--json]
-  [--loglevel LOGLEVEL]
-  [--targetusername TARGETUSERNAME]
-  [--apiversion APIVERSION]
-```
-
-### `forcex:jorje:import:label`
-Imports custom labels into the language server.  
-*You may have to restart the language server for the changes to take effect.*
-#### Command syntax
-```
-$ sfdx forcex:jorje:import:label 
-  [--json]
-  [--loglevel LOGLEVEL]
-  [--targetusername TARGETUSERNAME]
-  [--apiversion APIVERSION]
-```
-
 ### `forcex:apex:graph`
 Generates a dependency graph from Apex components.
 #### Command syntax
