@@ -12,6 +12,18 @@ To uninstall:
 
 ## Commands
 
+### `forcex:apex:jorje:import`
+Imports global classes and external strings from managed packages into the language server.  
+*You may have to restart the language server for the changes to take effect.*
+#### Command syntax
+```
+$ sfdx forcex:apex:jorje:import 
+  [--json]
+  [--loglevel LOGLEVEL]
+  [--targetusername TARGETUSERNAME]
+  [--apiversion APIVERSION]
+```
+
 ### `forcex:apex:graph`
 Generates a dependency graph from Apex components.
 #### Command syntax
