@@ -1,7 +1,7 @@
 {
 	"name": "sfdx-forcex",
 	"description": "Salesforce CLI extension plugin",
-	"version": "0.0.1",
+	"version": "0.0.0",
 	"author": "GeorgePreece",
 	"dependencies": {
 		"@salesforce/command": "^3"
@@ -11,7 +11,7 @@
 	},
 	"files": [],
 	"oclif": {
-		"commands": "./commands",
+		"commands": "./source/commands",
 		"bin": "sfdx",
 		"topics": {
 			"forcex": {
