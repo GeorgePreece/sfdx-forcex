@@ -46,3 +46,18 @@ $ sfdx forcex:apex:analyze:dependencies
   [--targetusername TARGETUSERNAME]
   [--apiversion APIVERSION]
 ```
+
+### `forcex:apex:graph`
+Generates a dependency graph from Apex components.
+#### Command syntax
+```bash
+$ sfdx forcex:apex:graph 
+  [--json]
+  [--loglevel LOGLEVEL]
+  [--targetusername TARGETUSERNAME]
+  [--apiversion APIVERSION]
+```
+#### Examples
+```bash
+$ sfdx forcex:apex:graph --json > graph.json
+```
