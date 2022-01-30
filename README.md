@@ -36,17 +36,6 @@ $ sfdx forcex:jorje:import:label
   [--apiversion APIVERSION]
 ```
 
-### `forcex:apex:analyze:dependencies`
-Retrieves and aggregates Apex class dependencies for review.
-#### Command syntax
-```
-$ sfdx forcex:apex:analyze:dependencies 
-  [--json]
-  [--loglevel LOGLEVEL]
-  [--targetusername TARGETUSERNAME]
-  [--apiversion APIVERSION]
-```
-
 ### `forcex:apex:graph`
 Generates a dependency graph from Apex components.
 #### Command syntax
