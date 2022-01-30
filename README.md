@@ -16,12 +16,16 @@ To uninstall:
 Imports global classes and external strings from managed packages into the language server.  
 *You may have to restart the language server for the changes to take effect.*
 #### Command syntax
-```
+```bash
 $ sfdx forcex:apex:jorje:import 
   [--json]
   [--loglevel LOGLEVEL]
   [--targetusername TARGETUSERNAME]
   [--apiversion APIVERSION]
+```
+#### Examples
+```bash
+$ sfdx forcex:apex:jorje:import
 ```
 
 ### `forcex:apex:graph`
