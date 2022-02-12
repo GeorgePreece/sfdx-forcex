@@ -1,19 +1,18 @@
 const command = require("@salesforce/command");
 
 module.exports = class extends command.SfdxCommand {
-	static name = "forcex:apex:graph";
+	static name = "forcex:apex:graph:create";
 	static requiresUsername = true;
 	static requiresProject = true;
-	static description = "builds a dependency graph from Apex classes";
+	static description = "builds a dependency graph of Apex classes";
 
 	async run() {
-		const result = new Object();
+		var result = new Object();
 
 		this.connection  = this.org.getConnection();
-		this.projectJson = await this.project.resolveProjectConfig();
 
-		result.nodes = await this.fetchNodes(this.projectJson.namespace);
-		result.edges = await this.fetchEdges(this.projectJson.namespace);
+		result.nodes = await this.fetchNodes();
+		result.edges = await this.fetchEdges();
 
 		return result;
 	}
@@ -37,7 +36,7 @@ module.exports = class extends command.SfdxCommand {
 		return result;
 	}
 
-	async fetchEdges(namespace) {
+	async fetchEdges() {
 		const result = [ ];
 
 		this.ux.startSpinner("Retrieving component dependencies");

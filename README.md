@@ -28,11 +28,11 @@ $ sfdx forcex:apex:jorje:import
 $ sfdx forcex:apex:jorje:import
 ```
 
-### `forcex:apex:graph`
+### `forcex:apex:graph:create`
 Generates a dependency graph from Apex components.
 #### Command syntax
 ```bash
-$ sfdx forcex:apex:graph 
+$ sfdx forcex:apex:graph:create
   [--json]
   [--loglevel LOGLEVEL]
   [--targetusername TARGETUSERNAME]
@@ -40,5 +40,5 @@ $ sfdx forcex:apex:graph
 ```
 #### Examples
 ```bash
-$ sfdx forcex:apex:graph --json > graph.json
+$ sfdx forcex:apex:graph:create --json > graph.json
 ```
